@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">부스트캠프 사전과제</string>
     <string name="search_keyword">검색어</string>
+    <string name="search_btn">검색</string>
 </resources>

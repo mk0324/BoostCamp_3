@@ -10,10 +10,13 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import assignment.boostcamp.mymovieapp.Data.Movie;
 import assignment.boostcamp.mymovieapp.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MoviesViewHolder extends RecyclerView.ViewHolder {
     private OnItemClickListener onItemClickListener;
@@ -36,14 +39,27 @@ public class MoviesViewHolder extends RecyclerView.ViewHolder {
 
     private Context context;
 
-    public MoviesViewHolder(final Context context, ViewGroup parent, OnItemClickListener onItemClickListener) {
+    public MoviesViewHolder(final Context context, ViewGroup parent, OnItemClickListener onItemClickListener, OnPositionListener onPositionListener) {
         super(LayoutInflater.from(context).inflate(R.layout.movie_item, parent, false));
         ButterKnife.bind(this, itemView);
         this.onItemClickListener = onItemClickListener;
+        this.onPositionListener = onPositionListener;
         this.context = context;
     }
 
     public void onBind(Movie movie, int position, int listSize){
-        
+
+        Glide.with(context)
+                .load(movie.getImage())
+                .into(moviePoster);
+
+        movieTitle.setText(movie.getTitle());
+        movieRating.setRating(Float.valueOf(movie.getUserRating()));
+        movieReleaseYear.setText(movie.getPubDate());
+        movieDirector.setText(movie.getDirector());
+        movieActors.setText(movie.getActor());
+
+        movieList.setOnClickListener(v -> onItemClickListener.onItemClick(movie));
+
     }
 }
