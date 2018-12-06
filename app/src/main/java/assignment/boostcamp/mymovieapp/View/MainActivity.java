@@ -5,22 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
-
-import assignment.boostcamp.mymovieapp.Adapter.MoviesAdapter;
-import assignment.boostcamp.mymovieapp.Data.Movie;
-import assignment.boostcamp.mymovieapp.Presenter.MoviesContract;
-import assignment.boostcamp.mymovieapp.Presenter.MoviesPresenter;
 import assignment.boostcamp.mymovieapp.R;
-import butterknife.BindBitmap;
+import assignment.boostcamp.mymovieapp.adapter.MoviesAdapter;
+import assignment.boostcamp.mymovieapp.data.Movie;
+import assignment.boostcamp.mymovieapp.presenter.MoviesContract;
+import assignment.boostcamp.mymovieapp.presenter.MoviesPresenter;
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements MoviesContract.View{

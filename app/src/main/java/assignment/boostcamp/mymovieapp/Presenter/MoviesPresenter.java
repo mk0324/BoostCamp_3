@@ -1,17 +1,18 @@
-package assignment.boostcamp.mymovieapp.Presenter;
+package assignment.boostcamp.mymovieapp.presenter;
 
 import java.util.ArrayList;
 import java.util.List;
-import assignment.boostcamp.mymovieapp.Adapter.MoviesAdapterContract;
-import assignment.boostcamp.mymovieapp.Adapter.OnItemClickListener;
-import assignment.boostcamp.mymovieapp.Adapter.OnPositionListener;
-import assignment.boostcamp.mymovieapp.Data.Movie;
-import assignment.boostcamp.mymovieapp.Model.MoviesModelCallback;
-import assignment.boostcamp.mymovieapp.Model.MoviesRetrofitModel;
+
+import assignment.boostcamp.mymovieapp.adapter.MoviesAdapterContract;
+import assignment.boostcamp.mymovieapp.adapter.OnItemClickListener;
+import assignment.boostcamp.mymovieapp.adapter.OnPositionListener;
+import assignment.boostcamp.mymovieapp.data.Movie;
+import assignment.boostcamp.mymovieapp.model.MoviesModelCallback;
+import assignment.boostcamp.mymovieapp.model.MoviesRetrofitModel;
 
 public class MoviesPresenter
     implements MoviesContract.Presenter, MoviesModelCallback.RetrofitCallback,
-        OnItemClickListener, OnPositionListener{
+        OnItemClickListener, OnPositionListener {
     private MoviesContract.View view;
     private MoviesRetrofitModel retrofitModel;
     private MoviesAdapterContract.View adapterView;

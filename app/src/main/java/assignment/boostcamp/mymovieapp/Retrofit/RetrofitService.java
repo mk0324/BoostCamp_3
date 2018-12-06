@@ -1,6 +1,6 @@
-package assignment.boostcamp.mymovieapp.Retrofit;
+package assignment.boostcamp.mymovieapp.retrofit;
 
-import assignment.boostcamp.mymovieapp.Data.Item;
+import assignment.boostcamp.mymovieapp.data.Item;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;

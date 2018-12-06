@@ -1,4 +1,4 @@
-package assignment.boostcamp.mymovieapp.Adapter;
+package assignment.boostcamp.mymovieapp.adapter;
 
 import java.util.ArrayList;
 

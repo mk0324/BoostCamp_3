@@ -1,4 +1,4 @@
-package assignment.boostcamp.mymovieapp.Retrofit;
+package assignment.boostcamp.mymovieapp.retrofit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

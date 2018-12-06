@@ -1,8 +1,8 @@
-package assignment.boostcamp.mymovieapp.Model;
+package assignment.boostcamp.mymovieapp.model;
 
 import java.util.List;
 
-import assignment.boostcamp.mymovieapp.Data.Movie;
+import assignment.boostcamp.mymovieapp.data.Movie;
 
 public interface MoviesModelCallback {
     interface RetrofitCallback{

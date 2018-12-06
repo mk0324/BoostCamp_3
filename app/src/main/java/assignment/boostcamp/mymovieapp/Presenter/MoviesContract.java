@@ -1,7 +1,7 @@
-package assignment.boostcamp.mymovieapp.Presenter;
+package assignment.boostcamp.mymovieapp.presenter;
 
-import assignment.boostcamp.mymovieapp.Adapter.MoviesAdapterContract;
-import assignment.boostcamp.mymovieapp.Data.Movie;
+import assignment.boostcamp.mymovieapp.adapter.MoviesAdapterContract;
+import assignment.boostcamp.mymovieapp.data.Movie;
 
 public interface MoviesContract {
     interface View{

@@ -1,4 +1,4 @@
-package assignment.boostcamp.mymovieapp.Retrofit;
+package assignment.boostcamp.mymovieapp.retrofit;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package assignment.boostcamp.mymovieapp.Adapter;
+package assignment.boostcamp.mymovieapp.adapter;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;

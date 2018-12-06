@@ -1,4 +1,4 @@
-package assignment.boostcamp.mymovieapp.Data;
+package assignment.boostcamp.mymovieapp.data;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

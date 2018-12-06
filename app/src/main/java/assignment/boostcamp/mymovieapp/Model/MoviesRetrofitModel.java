@@ -1,15 +1,13 @@
-package assignment.boostcamp.mymovieapp.Model;
+package assignment.boostcamp.mymovieapp.model;
 
 import android.content.SharedPreferences;
 
 import java.util.List;
 
-import assignment.boostcamp.mymovieapp.Data.Item;
-import assignment.boostcamp.mymovieapp.Data.Movie;
-import assignment.boostcamp.mymovieapp.Retrofit.ResponseCode;
-import assignment.boostcamp.mymovieapp.Retrofit.RetrofitService;
-import assignment.boostcamp.mymovieapp.Retrofit.RetrofitServiceManager;
-import assignment.boostcamp.mymovieapp.Retrofit.SharePreferenceManager;
+import assignment.boostcamp.mymovieapp.retrofit.RetrofitServiceManager;
+import assignment.boostcamp.mymovieapp.data.Item;
+import assignment.boostcamp.mymovieapp.data.Movie;
+import assignment.boostcamp.mymovieapp.retrofit.RetrofitService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

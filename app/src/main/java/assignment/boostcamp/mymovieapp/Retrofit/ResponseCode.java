@@ -1,4 +1,4 @@
-package assignment.boostcamp.mymovieapp.Retrofit;
+package assignment.boostcamp.mymovieapp.retrofit;
 
 public class ResponseCode {
     //잘못된 쿼리요청

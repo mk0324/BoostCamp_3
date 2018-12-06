@@ -1,4 +1,4 @@
-package assignment.boostcamp.mymovieapp.Data;
+package assignment.boostcamp.mymovieapp.data;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
