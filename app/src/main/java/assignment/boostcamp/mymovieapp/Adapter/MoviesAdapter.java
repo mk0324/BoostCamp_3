@@ -13,6 +13,7 @@ import assignment.boostcamp.mymovieapp.data.Movie;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder>
     implements MoviesAdapterContract.View, MoviesAdapterContract.Model{
 
+    private static final String TAG = MoviesAdapter.class.getSimpleName();
     private ArrayList<Movie> items;
     private OnItemClickListener onItemClickListener;
     private OnPositionListener onPositionListener;
@@ -33,8 +34,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder>
     public void onBindViewHolder(@NonNull MoviesViewHolder holder, int position) {
         if(holder == null)
             return;
-        holder.onBind(items.get(position));
-        //holder.setOnItemClickListener(onItemClickListener);
+        holder.onBind(items.get(position), position, getItemCount());
     }
 
     @Override

@@ -7,20 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import assignment.boostcamp.mymovieapp.R;
 import assignment.boostcamp.mymovieapp.adapter.MoviesAdapter;
-import assignment.boostcamp.mymovieapp.adapter.MoviesViewHolder;
-import assignment.boostcamp.mymovieapp.adapter.OnItemClickListener;
 import assignment.boostcamp.mymovieapp.data.Movie;
 import assignment.boostcamp.mymovieapp.presenter.MoviesContract;
 import assignment.boostcamp.mymovieapp.presenter.MoviesPresenter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MoviesContract.View{
 
@@ -75,11 +71,9 @@ public class MainActivity extends AppCompatActivity implements MoviesContract.Vi
     }
 
     @Override
-    public void onLinkToMovieDetail() {
-        adapter.setOnClickListener((holder, view, position) -> {
-            Movie item = adapter.getItem(position);
-
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getLink()));
+    public void onLinkToMovieDetail(Movie movie) {
+        adapter.setOnClickListener((item, position) -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(adapter.getItem(position).getLink()));
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             startActivity(intent);

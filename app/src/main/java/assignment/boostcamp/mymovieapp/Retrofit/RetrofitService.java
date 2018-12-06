@@ -11,6 +11,8 @@ public interface RetrofitService {
     Call<Item> getMovies(
             @Header("X-Naver-Client-Id") String id,
             @Header("X-Naver-Client-Secret") String secret,
-            @Query("query") String search
+            @Query("query") String search,
+            @Query("display") int display,
+            @Query("start") int start
     );
 }

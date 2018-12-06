@@ -24,10 +24,10 @@ public class MoviesRetrofitModel {
         this.callback = callback;
     }
 
-    public void getMovies(String search){
+    public void getMovies(String search, int display, int start){
         String client_id = "Xgltfccu6rti3kKussJg";
         String client_secret = "zLXeNw3XZy";
-        Call<Item> call = retrofitService.getMovies(client_id, client_secret, search);
+        Call<Item> call = retrofitService.getMovies(client_id, client_secret, search, display, start);
         call.enqueue(new Callback<Item>(){
             @Override
             public void onResponse(Call<Item> call, Response<Item> response) {

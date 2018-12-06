@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import assignment.boostcamp.mymovieapp.adapter.MoviesAdapterContract;
-import assignment.boostcamp.mymovieapp.adapter.MoviesViewHolder;
 import assignment.boostcamp.mymovieapp.adapter.OnItemClickListener;
 import assignment.boostcamp.mymovieapp.adapter.OnPositionListener;
 import assignment.boostcamp.mymovieapp.data.Movie;
@@ -31,17 +30,17 @@ public class MoviesPresenter
     public void getMovies(String search) {
         this.search = search;
         adapterModel.clearItem();
-        retrofitModel.getMovies(search);
+        retrofitModel.getMovies(search, 10, 1);
     }
 
     @Override
-    public void onItemClick(MoviesViewHolder holder, View view, int position) {
-        //view.onLinkToMovieDetail();
+    public void onItemClick(Movie item, int position) {
+        view.onLinkToMovieDetail(item);
     }
 
     @Override
     public void onLoad(int page) {
-        retrofitModel.getMovies(search);
+        retrofitModel.getMovies(search, 10, 10*page);
     }
 
     @Override

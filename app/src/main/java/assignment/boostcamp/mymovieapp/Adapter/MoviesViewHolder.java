@@ -3,6 +3,7 @@ package assignment.boostcamp.mymovieapp.adapter;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MoviesViewHolder extends RecyclerView.ViewHolder {
+    private static final String TAG = MoviesViewHolder.class.getSimpleName();
     private OnItemClickListener onItemClickListener;
     private OnPositionListener onPositionListener;
 
@@ -45,7 +47,7 @@ public class MoviesViewHolder extends RecyclerView.ViewHolder {
         this.context = context;
     }
 
-    public void onBind(Movie movie){
+    public void onBind(Movie movie, int position, int listSize){
 
         Glide.with(context)
                 .load(movie.getImage())
@@ -57,9 +59,17 @@ public class MoviesViewHolder extends RecyclerView.ViewHolder {
         movieDirector.setText(movie.getDirector());
         movieActors.setText(movie.getActor());
 
-        movieList.setOnClickListener(v -> {
-            int position = getAdapterPosition();
-            onItemClickListener.onItemClick(this, v, position);
-        });
+        movieList.setOnClickListener(v -> onItemClickListener.onItemClick(movie, position));
+
+        /*int page = 1;
+        if(position == 9){
+            page += 1;
+            onPositionListener.onLoad(page);
+        }else if(position == 0 && page != 1){
+            page -= 1;
+            onPositionListener.onLoad(page);
+        }*/
+
+        Log.d(TAG, "position " + position + " / max " + listSize);
     }
 }
