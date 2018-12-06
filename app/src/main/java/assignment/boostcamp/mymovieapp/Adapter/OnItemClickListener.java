@@ -1,8 +1,7 @@
 package assignment.boostcamp.mymovieapp.adapter;
 
-
-import assignment.boostcamp.mymovieapp.data.Movie;
+import android.view.View;
 
 public interface OnItemClickListener {
-    void onItemClick(Movie item);
+    void onItemClick(MoviesViewHolder holder, View view, int position);
 }

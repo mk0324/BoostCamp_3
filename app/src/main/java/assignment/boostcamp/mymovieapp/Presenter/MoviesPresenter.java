@@ -1,9 +1,12 @@
 package assignment.boostcamp.mymovieapp.presenter;
 
+import android.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import assignment.boostcamp.mymovieapp.adapter.MoviesAdapterContract;
+import assignment.boostcamp.mymovieapp.adapter.MoviesViewHolder;
 import assignment.boostcamp.mymovieapp.adapter.OnItemClickListener;
 import assignment.boostcamp.mymovieapp.adapter.OnPositionListener;
 import assignment.boostcamp.mymovieapp.data.Movie;
@@ -32,9 +35,8 @@ public class MoviesPresenter
     }
 
     @Override
-    public void onItemClick(Movie item) {
-        view.onLinkToMovieDetail(item);
-
+    public void onItemClick(MoviesViewHolder holder, View view, int position) {
+        //view.onLinkToMovieDetail();
     }
 
     @Override

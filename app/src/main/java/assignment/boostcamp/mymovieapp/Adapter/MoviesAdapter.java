@@ -3,12 +3,12 @@ package assignment.boostcamp.mymovieapp.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import assignment.boostcamp.mymovieapp.Data.Movie;
+import assignment.boostcamp.mymovieapp.data.Movie;
+
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder>
     implements MoviesAdapterContract.View, MoviesAdapterContract.Model{
@@ -33,7 +33,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder>
     public void onBindViewHolder(@NonNull MoviesViewHolder holder, int position) {
         if(holder == null)
             return;
-        holder.onBind(items.get(position), position, getItemCount());
+        holder.onBind(items.get(position));
+        //holder.setOnItemClickListener(onItemClickListener);
     }
 
     @Override
@@ -61,6 +62,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder>
     @Override
     public ArrayList getItems() {
         return items;
+    }
+
+    public Movie getItem(int position) {
+        return items.get(position);
     }
 
     @Override

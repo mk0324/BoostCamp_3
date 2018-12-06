@@ -10,7 +10,7 @@ public interface MoviesContract {
         void onUnknownError();
         void onSuccessGetList();
         void onConnectFail();
-        void onLinkToMovieDetail(Movie item);
+        void onLinkToMovieDetail();
         void onNotFound();
     }
 
