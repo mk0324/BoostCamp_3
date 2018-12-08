@@ -1,13 +1,9 @@
 package assignment.boostcamp.mymovieapp.presenter;
 
-import android.view.View;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import assignment.boostcamp.mymovieapp.adapter.MoviesAdapterContract;
-import assignment.boostcamp.mymovieapp.adapter.OnItemClickListener;
-import assignment.boostcamp.mymovieapp.adapter.OnPositionListener;
 import assignment.boostcamp.mymovieapp.data.Movie;
 import assignment.boostcamp.mymovieapp.model.MoviesModelCallback;
 import assignment.boostcamp.mymovieapp.model.MoviesRetrofitModel;
@@ -34,7 +30,7 @@ public class MoviesPresenter
     }
 
     @Override
-    public void onItemClick(Movie item, int position) {
+    public void onItemClick(Movie item) {
         view.onLinkToMovieDetail(item);
     }
 

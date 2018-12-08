@@ -1,7 +1,5 @@
 package assignment.boostcamp.mymovieapp.model;
 
-import android.content.SharedPreferences;
-
 import java.util.List;
 
 import assignment.boostcamp.mymovieapp.retrofit.RetrofitServiceManager;

@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import assignment.boostcamp.mymovieapp.data.Movie;
+import assignment.boostcamp.mymovieapp.presenter.MoviesContract;
+import assignment.boostcamp.mymovieapp.presenter.MoviesPresenter;
+import assignment.boostcamp.mymovieapp.presenter.OnItemClickListener;
+import assignment.boostcamp.mymovieapp.presenter.OnPositionListener;
 
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder>
@@ -17,6 +21,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder>
     private ArrayList<Movie> items;
     private OnItemClickListener onItemClickListener;
     private OnPositionListener onPositionListener;
+    //protected MoviesPresenter presenter;
     private Context context;
 
     public MoviesAdapter(Context context) {
@@ -46,6 +51,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder>
 
     @Override
     public void setOnClickListener(OnItemClickListener onClickListener) {
+        //this.onItemClickListener = presenter;
         this.onItemClickListener = onClickListener;
     }
 
