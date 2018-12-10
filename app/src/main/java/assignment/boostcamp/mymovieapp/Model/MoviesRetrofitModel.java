@@ -3,7 +3,7 @@ package assignment.boostcamp.mymovieapp.model;
 import java.util.List;
 
 import assignment.boostcamp.mymovieapp.retrofit.RetrofitServiceManager;
-import assignment.boostcamp.mymovieapp.data.Item;
+import assignment.boostcamp.mymovieapp.data.MoviesResponse;
 import assignment.boostcamp.mymovieapp.data.Movie;
 import assignment.boostcamp.mymovieapp.retrofit.RetrofitService;
 import retrofit2.Call;
@@ -25,10 +25,10 @@ public class MoviesRetrofitModel {
     public void getMovies(String search, int display, int start){
         String client_id = "Xgltfccu6rti3kKussJg";
         String client_secret = "zLXeNw3XZy";
-        Call<Item> call = retrofitService.getMovies(client_id, client_secret, search, display, start);
-        call.enqueue(new Callback<Item>(){
+        Call<MoviesResponse> call = retrofitService.getMovies(client_id, client_secret, search, display, start);
+        call.enqueue(new Callback<MoviesResponse>(){
             @Override
-            public void onResponse(Call<Item> call, Response<Item> response) {
+            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
                /* if (response.code() == ResponseCode.SE01) {
                     callback.onSuccess(ResponseCode.SE01, null);
                     return;
@@ -50,7 +50,7 @@ public class MoviesRetrofitModel {
             }
 
             @Override
-            public void onFailure(Call<Item> call, Throwable t) {
+            public void onFailure(Call<MoviesResponse> call, Throwable t) {
                 t.printStackTrace();
                 callback.onFailure();
             }

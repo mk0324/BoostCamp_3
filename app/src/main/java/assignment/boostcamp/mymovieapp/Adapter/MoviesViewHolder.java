@@ -59,13 +59,18 @@ public class MoviesViewHolder extends RecyclerView.ViewHolder {
         this.context = context;
     }
 
+    public String removeTag(String html) {
+        return html.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+    }
+
     public void onBind(Movie movie, int position, int listSize){
 
         Glide.with(context)
                 .load(movie.getImage())
                 .into(moviePoster);
-
-        movieTitle.setText(movie.getTitle());
+        
+        movieTitle.setText(removeTag(movie.getTitle()));
+        //movieTitle.setText(movie.getTitle());
         movieRating.setRating((Float.valueOf(movie.getUserRating()))/2);
         movieReleaseYear.setText(movie.getPubDate());
         movieDirector.setText(movie.getDirector());
