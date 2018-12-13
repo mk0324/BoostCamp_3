@@ -81,14 +81,10 @@ public class MoviesViewHolder extends RecyclerView.ViewHolder {
         // 여기서 어떻게 onItemClick 이 presenter 로 전달될 수 있나?
         movieList.setOnClickListener(v -> onItemClickListener.onItemClick(movie));
 
-        /*int page = 1;
-        if(position == 9){
-            page += 1;
+        if(position == listSize - 1){
+            int page = (listSize / 10) + 1;
             onPositionListener.onLoad(page);
-        }else if(position == 0 && page != 1){
-            page -= 1;
-            onPositionListener.onLoad(page);
-        }*/
+        }
 
         Log.d(TAG, "position " + position + " / max " + listSize);
     }

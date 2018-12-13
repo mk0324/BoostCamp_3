@@ -20,6 +20,7 @@ public class MoviesPresenter
     private MoviesAdapterContract.View adapterView;
     private MoviesAdapterContract.Model adapterModel;
     private String search;
+    private int page;
 
     public MoviesPresenter() {
         retrofitModel = new MoviesRetrofitModel();
@@ -40,7 +41,10 @@ public class MoviesPresenter
 
     @Override
     public void onLoad(int page) {
-        retrofitModel.getMovies(search, 10, 10*page);
+        if(this.page == page)
+            return;
+        this.page = page;
+        retrofitModel.getMovies(search, 10, (10*page) + 1);
     }
 
     @Override
