@@ -19,6 +19,7 @@ import retrofit2.Response;
 public class MoviesRetrofitModel {
     private MoviesModelCallback.RetrofitCallback callback;
     private RetrofitService retrofitService;
+    private int totalSize;
 
     public MoviesRetrofitModel() {
         retrofitService = RetrofitServiceManager.getInstance();
@@ -35,13 +36,20 @@ public class MoviesRetrofitModel {
         call.enqueue(new Callback<MoviesResponse>(){
             @Override
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
-                //여러가지 에러코드 처리
+                // 여러가지 에러코드 처리
                 if(response.isSuccessful()) {
+                    // 검색 결과가 없을 경우
                     if(response.body().getTotal() == 0){
                         callback.onSuccess(response.code(), null);
                     }
-                    List<Movie> movies = response.body().getItems();
-                    callback.onSuccess(response.code(), movies);
+                    // 총 결과보다 검색 시작위치가 클 경우 서버에서 start 가 1로 세팅됨.
+                    totalSize = response.body().getTotal();
+                    if(start > totalSize){
+                        callback.onSuccess(response.code(), null);
+                    }else {
+                        List<Movie> movies = response.body().getItems();
+                        callback.onSuccess(response.code(), movies);
+                    }
                 } else {
                     Gson gson = new Gson();
                     ErrorResponse errorResponse = gson.fromJson(response.errorBody().charStream(), ErrorResponse.class);

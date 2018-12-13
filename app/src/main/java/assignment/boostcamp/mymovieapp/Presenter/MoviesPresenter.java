@@ -29,6 +29,7 @@ public class MoviesPresenter
 
     @Override
     public void getMovies(String search) {
+        this.page = 1;
         this.search = search;
         adapterModel.clearItem();
         retrofitModel.getMovies(search, 10, 1);
@@ -44,7 +45,7 @@ public class MoviesPresenter
         if(this.page == page)
             return;
         this.page = page;
-        retrofitModel.getMovies(search, 10, (10*page) + 1);
+        retrofitModel.getMovies(search, 10, (10*(page-1)) + 1);
     }
 
     @Override
