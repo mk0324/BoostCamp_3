@@ -1,12 +1,16 @@
 package assignment.boostcamp.mymovieapp.presenter;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import assignment.boostcamp.mymovieapp.adapter.MoviesAdapterContract;
+import assignment.boostcamp.mymovieapp.data.ErrorResponse;
 import assignment.boostcamp.mymovieapp.data.Movie;
 import assignment.boostcamp.mymovieapp.model.MoviesModelCallback;
 import assignment.boostcamp.mymovieapp.model.MoviesRetrofitModel;
+import assignment.boostcamp.mymovieapp.retrofit.ResponseCode;
 
 public class MoviesPresenter
     implements MoviesContract.Presenter, MoviesModelCallback.RetrofitCallback,
@@ -40,10 +44,31 @@ public class MoviesPresenter
     }
 
     @Override
-    public void onSuccess(List<Movie> movies) {
-        adapterModel.addItems(new ArrayList(movies));
-        view.onSuccessGetList();
-        return;
+    public void onSuccess(int code, List<Movie> movies) {
+        if(movies == null) {
+            view.toast("검색 결과가 없습니다.");
+            return;
+        }else {
+            adapterModel.addItems(new ArrayList(movies));
+            //view.onSuccessGetList();
+            return;
+        }
+    }
+
+    @Override
+    public void onError(int code, ErrorResponse errorResponse){
+        Log.d(errorResponse.getErrorCode(), errorResponse.getErrorMessage());
+        String msg = "";
+
+        if(code == ResponseCode.ERROR_400){
+            msg = "검색 요청에 오류가 있습니다.";
+        }else if(code == ResponseCode.ERROR_404){
+            msg = "요청 URL이 잘못되었습니다.";
+        }else if(code == ResponseCode.ERROR_500){
+            msg = "서버 내부 에러가 발생했습니다.";
+        }
+
+        view.toast(msg);
     }
 
     @Override

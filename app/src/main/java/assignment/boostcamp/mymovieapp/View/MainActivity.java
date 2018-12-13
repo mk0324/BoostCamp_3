@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import assignment.boostcamp.mymovieapp.R;
 import assignment.boostcamp.mymovieapp.adapter.MoviesAdapter;
 import assignment.boostcamp.mymovieapp.data.Movie;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements MoviesContract.Vi
         // 다른 클래스에 대한 presenter 메소드에 접근제한을 두기 위해
         presenter = new MoviesPresenter();
         // attachView 를 하는 이유?
-        //
+        // 상세 링크 연결과 관련있음
         presenter.attachView(this);
 
         adapter = new MoviesAdapter(this);
@@ -62,11 +64,7 @@ public class MainActivity extends AppCompatActivity implements MoviesContract.Vi
             searchStr = searchBar.getText().toString();
             InputMethodManager keyboard = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             keyboard.hideSoftInputFromWindow(searchBar.getWindowToken(), 0);
-            if(searchStr.equals("")){
-                // 검색어 없음 -> 아직보류
-                // refreshList(null);
-                return;
-            }
+
             refreshList(searchStr);
         });
     }
@@ -91,31 +89,12 @@ public class MainActivity extends AppCompatActivity implements MoviesContract.Vi
 
     @Override
     public void toast(String msg) {
-
-    }
-
-    @Override
-    public void onUnauthorizedError() {
-
-    }
-
-    @Override
-    public void onUnknownError() {
-
-    }
-
-    @Override
-    public void onSuccessGetList() {
-
+        Runnable r = () -> Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        this.runOnUiThread(r);
     }
 
     @Override
     public void onConnectFail() {
-
-    }
-
-    @Override
-    public void onNotFound() {
-
+        toast("서버 연결에 실패했습니다. 다시 시도해주세요.");
     }
 }

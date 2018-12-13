@@ -52,14 +52,15 @@ public class MoviesViewHolder extends RecyclerView.ViewHolder {
         // 여기서 presenter 생성하면 presenter 가 여러개가 되니까..ㅠㅠㅠ
         //presenter = new MoviesPresenter();
 
-        //홀더는 adapter 에서 전달된 onItemClickListener 를 참조
-        //this.onItemClickListener = presenter;
+        // 홀더는 adapter 에서 전달된 onItemClickListener 를 참조
+        // this.onItemClickListener = presenter;
         this.onItemClickListener = onItemClickListener;
         this.onPositionListener = onPositionListener;
         this.context = context;
     }
 
     public String removeTag(String html) {
+        // html 태그 제거
         return html.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
     }
 
@@ -68,7 +69,7 @@ public class MoviesViewHolder extends RecyclerView.ViewHolder {
         Glide.with(context)
                 .load(movie.getImage())
                 .into(moviePoster);
-        
+
         movieTitle.setText(removeTag(movie.getTitle()));
         //movieTitle.setText(movie.getTitle());
         movieRating.setRating((Float.valueOf(movie.getUserRating()))/2);
@@ -76,7 +77,7 @@ public class MoviesViewHolder extends RecyclerView.ViewHolder {
         movieDirector.setText(movie.getDirector());
         movieActors.setText(movie.getActor());
 
-        //얘는 adapter 가 아닌 presenter 로 전달된다..
+        // 얘는 adapter 가 아닌 presenter 로 전달된다..
         // 여기서 어떻게 onItemClick 이 presenter 로 전달될 수 있나?
         movieList.setOnClickListener(v -> onItemClickListener.onItemClick(movie));
 

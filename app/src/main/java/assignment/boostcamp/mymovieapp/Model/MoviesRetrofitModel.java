@@ -1,7 +1,13 @@
 package assignment.boostcamp.mymovieapp.model;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+
 import java.util.List;
 
+import assignment.boostcamp.mymovieapp.data.ErrorResponse;
+import assignment.boostcamp.mymovieapp.retrofit.ResponseCode;
 import assignment.boostcamp.mymovieapp.retrofit.RetrofitServiceManager;
 import assignment.boostcamp.mymovieapp.data.MoviesResponse;
 import assignment.boostcamp.mymovieapp.data.Movie;
@@ -29,24 +35,20 @@ public class MoviesRetrofitModel {
         call.enqueue(new Callback<MoviesResponse>(){
             @Override
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
-               /* if (response.code() == ResponseCode.SE01) {
-                    callback.onSuccess(ResponseCode.SE01, null);
+                //여러가지 에러코드 처리
+                if(response.isSuccessful()) {
+                    if(response.body().getTotal() == 0){
+                        callback.onSuccess(response.code(), null);
+                    }
+                    List<Movie> movies = response.body().getItems();
+                    callback.onSuccess(response.code(), movies);
+                } else {
+                    Gson gson = new Gson();
+                    ErrorResponse errorResponse = gson.fromJson(response.errorBody().charStream(), ErrorResponse.class);
+
+                    callback.onError(response.code(), errorResponse);
                     return;
                 }
-                if (response.code() == ResponseCode.SE05) {
-                    callback.onSuccess(ResponseCode.SE05, null);
-                    return;
-                }
-                if (response.code() == ResponseCode.SE06) {
-                    callback.onSuccess(ResponseCode.SE06, null);
-                    return;
-                }
-                if (response.code() == ResponseCode.SE99) {
-                    callback.onSuccess(ResponseCode.SE99, null);
-                    return;
-                }*/
-                List<Movie> movies = response.body().getItems();
-                callback.onSuccess(movies);
             }
 
             @Override

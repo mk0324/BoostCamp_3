@@ -6,12 +6,8 @@ import assignment.boostcamp.mymovieapp.data.Movie;
 public interface MoviesContract {
     interface View{
         void toast(String msg);
-        void onUnauthorizedError();
-        void onUnknownError();
-        void onSuccessGetList();
         void onConnectFail();
         void onLinkToMovieDetail(Movie movie);
-        void onNotFound();
     }
 
     interface Presenter{
