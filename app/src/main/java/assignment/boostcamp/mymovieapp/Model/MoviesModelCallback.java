@@ -7,7 +7,7 @@ import assignment.boostcamp.mymovieapp.data.Movie;
 
 public interface MoviesModelCallback {
     interface RetrofitCallback{
-        void onSuccess(int code, List<Movie> movies);
+        void onSuccess(boolean researchResult, List<Movie> movies);
         void onError(int code, ErrorResponse errorResponse);
         void onFailure();
     }

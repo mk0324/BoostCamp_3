@@ -32,7 +32,7 @@ public class MoviesPresenter
         this.page = 1;
         this.search = search;
         adapterModel.clearItem();
-        retrofitModel.getMovies(search, 10, 1);
+        retrofitModel.getMovies(search, 1);
     }
 
     @Override
@@ -42,16 +42,21 @@ public class MoviesPresenter
 
     @Override
     public void onLoad(int page) {
-        if(this.page == page)
+        if(this.page == page) {
+            view.toast("목록을 모두 가져왔습니다.");
             return;
+        }
         this.page = page;
-        retrofitModel.getMovies(search, 10, (10*(page-1)) + 1);
+        retrofitModel.getMovies(search, (10*(page-1)) + 1);
     }
 
     @Override
-    public void onSuccess(int code, List<Movie> movies) {
-        if(movies == null) {
+    public void onSuccess(boolean researchResult, List<Movie> movies) {
+        if(movies == null && researchResult == ResponseCode.RESULT_FAIL) {
             view.toast("검색 결과가 없습니다.");
+            return;
+        }else if(movies == null && researchResult == ResponseCode.RESULT_SUCCESS) {
+            view.toast("목록을 모두 가져왔습니다.");
             return;
         }else {
             adapterModel.addItems(new ArrayList(movies));

@@ -17,7 +17,7 @@ import assignment.boostcamp.mymovieapp.presenter.OnPositionListener;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder>
     implements MoviesAdapterContract.View, MoviesAdapterContract.Model{
 
-    private static final String TAG = MoviesAdapter.class.getSimpleName();
+    //private static final String TAG = MoviesAdapter.class.getSimpleName();
     private ArrayList<Movie> items;
     private OnItemClickListener onItemClickListener;
     private OnPositionListener onPositionListener;
@@ -70,9 +70,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder>
         return items;
     }
 
-    public Movie getItem(int position) {
+    /*public Movie getItem(int position) {
         return items.get(position);
-    }
+    }*/
 
     @Override
     public void setItems(ArrayList items) {
