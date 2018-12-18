@@ -1,6 +1,11 @@
 # 부스트캠프 Android 사전과제 - 영화정보 검색 어플리케이션
 - MyMovieApp
 
+# 빌드 고려사항 
+현재 지원자의 컴퓨터에서는
+gradle.properties 파일의
+android.enableAapt2=false 부분이 있어야 빌드가 됨
+
 # 구현
 ## 필수 구현사항
 - EditText를 통해 검색어를 입력받아 `검색`버튼으로 영화 검색
